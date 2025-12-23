@@ -1,59 +1,54 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Todo App (Application de Gestion de Tâches)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 1. Présentation générale
+Le projet **Todo App** est une application web permettant de gérer les tâches quotidiennes. 
+Le projet est développé avec **Laravel 12** et une architecture **API RESTful**.
 
-## About Laravel
+## 2. Fonctionnalités principales
+- **Liste des tâches** : consulter toutes les tâches.
+- **Ajout d’une tâche** : créer une nouvelle tâche avec un titre et une description.
+- **Modification d’une tâche** : mettre à jour le titre, la description ou l'état d'une tâche.
+- **Suppression d’une tâche** : supprimer une tâche existante.
+- **Sécurité et validation** : protection via middleware et validation des requêtes.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 3. Architecture du projet
+- **Model** : `Todo` avec attributs `id`, `title`, `description`, `is_completed`, `created_at`, `updated_at`.
+- **Controller** : `TodoController` gère toutes les opérations CRUD.
+- **Routes API** : définies dans `routes/api.php`.
+- **Base de données** : SQLite pour le développement local.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Exemple de routes
+```php
+Route::get('/todos', [TodoController::class, 'index']);
+Route::post('/todos', [TodoController::class, 'store']);
+Route::get('/todos/{id}', [TodoController::class, 'show']);
+Route::put('/todos/{id}', [TodoController::class, 'update']);
+Route::delete('/todos/{id}', [TodoController::class, 'destroy']);
+4. Configuration et dépendances
+Laravel 12
+SQLite
+Composer
+Git/GitHub
+5. Utilisation du projet
+Cloner le projet :
+git clone https://github.com/Nour8574/todoapp_api.git
+cd todoapp_api
+*/Installer les dépendances :
+composer install
+*/Configurer l’environnement :
+Copier .env.example en .env.
+*/Vérifier la configuration SQLite.
+*/Créer la base de données et les tables :
+php artisan migrate
+*/Lancer le serveur Laravel :
+php artisan serve
+*/Tester l’API via Postman ou navigateur :
+GET    /api/todos
+POST   /api/todos
+PUT    /api/todos/{id}
+DELETE /api/todos/{id}
+6. Conclusion
+Ce projet est un exemple complet d’une application CRUD avec API RESTful, démontrant :
+Gestion des routes et contrôleurs,
+Configuration base SQLite,
+Versionning via GitHub.
