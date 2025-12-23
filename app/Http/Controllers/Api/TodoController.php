@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\Todo;
+use Illuminate\Http\Request;
+
+class TodoController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
+
+    public function index()
+    {
+        return response()->json(auth()->user()->todos);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'nullable',
+            'completed' => 'boolean'
+        ]);
+
+        $todo = auth()->user()->todos()->create($request->all());
+        return response()->json($todo, 201);
+    }
+
+    public function show(Todo $todo)
+    {
+        return response()->json($todo);
+    }
+
+    public function update(Request $request, Todo $todo)
+    {
+        $todo->update($request->all());
+        return response()->json($todo);
+    }
+
+    public function destroy(Todo $todo)
+    {
+        $todo->delete();
+        return response()->json(null, 204);
+    }
+}
